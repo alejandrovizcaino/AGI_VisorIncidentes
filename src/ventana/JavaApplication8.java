@@ -38,6 +38,7 @@ public class JavaApplication8 extends javax.swing.JFrame {
     JXMapViewer mapViewer = new JXMapViewer();
     Set<SwingWaypoint> waypoints = new HashSet();
     WaypointPainter<SwingWaypoint> swingWaypointPainter = new SwingWaypointOverlayPainter();
+    Datos misdatos = new Datos();
     // End of variables declaration  
 
 
@@ -45,9 +46,10 @@ public class JavaApplication8 extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public JavaApplication8() {
-        initComponents();
         
-        //
+        misdatos.cargarFichero();
+        this.setTitle("Visor de incidentes de Nueva York");
+        initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
@@ -265,10 +267,26 @@ public class JavaApplication8 extends javax.swing.JFrame {
         if (jTextField1.equals("") || jTextField2.equals("")){
             System.out.println("vacío");
         }
-        if (jTextField1.)
+        if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty()){
+            
+            int i = 0;
+            while(i < misdatos.getLineasFichero().size()){
+                String fecha = misdatos.getLineasFichero().get(i).getFecha();
+                if(fecha.compareTo(jTextField1.getText())>=0 && fecha.compareTo(jTextField2.getText())<0){
+                    
+                    GeoPosition geo_temp = new GeoPosition(misdatos.getLineasFichero().get(i).getLatitud(), misdatos.getLineasFichero().get(i).getLongitud());
+                    SwingWaypoint sw = new SwingWaypoint
+                }
+                i++;
+            }
+        }
         
+            
+            
+            
+        /*
          // Create waypoints from the geo-positions
-        Set<SwingWaypoint> waypoints = new HashSet<SwingWaypoint>(Arrays.asList(
+        waypoints = new HashSet<SwingWaypoint>(Arrays.asList(
                 new SwingWaypoint("Frankfurt", frankfurt),
                 new SwingWaypoint("Wiesbaden", wiesbaden),
                 new SwingWaypoint("Mainz", mainz),
@@ -283,7 +301,7 @@ public class JavaApplication8 extends javax.swing.JFrame {
         // Add the JButtons to the map viewer
         for (SwingWaypoint w : waypoints) {
             mapViewer.add(w.getButton());
-        }
+        }*/
 
     }                                        
 
