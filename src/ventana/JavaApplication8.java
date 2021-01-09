@@ -311,6 +311,8 @@ public class JavaApplication8 extends javax.swing.JFrame {
         // TODO add your handling code here:
         mapViewer.removeAll();
         waypoints.clear();
+        swingWaypointPainter.setWaypoints(waypoints);
+        mapViewer.setOverlayPainter(swingWaypointPainter);
         
     }
 
@@ -318,6 +320,8 @@ public class JavaApplication8 extends javax.swing.JFrame {
         // TODO add your handling code here:
         mapViewer.removeAll();
         waypoints.clear();
+        swingWaypointPainter.setWaypoints(waypoints);
+        mapViewer.setOverlayPainter(swingWaypointPainter);
     }
 
     /**
