@@ -287,25 +287,6 @@ public class JavaApplication8 extends javax.swing.JFrame {
         for (SwingWaypoint w : waypoints) {
             mapViewer.add(w.getButton());
         }
-
-        /*
-         // Create waypoints from the geo-positions
-        waypoints = new HashSet<SwingWaypoint>(Arrays.asList(
-                new SwingWaypoint("Frankfurt", frankfurt),
-                new SwingWaypoint("Wiesbaden", wiesbaden),
-                new SwingWaypoint("Mainz", mainz),
-                new SwingWaypoint("Darmstadt", darmstadt),
-                new SwingWaypoint("Offenbach", offenbach)));
-
-        // Set the overlay painter
-        
-        swingWaypointPainter.setWaypoints(waypoints);
-        mapViewer.setOverlayPainter(swingWaypointPainter);
-
-        // Add the JButtons to the map viewer
-        for (SwingWaypoint w : waypoints) {
-            mapViewer.add(w.getButton());
-        }*/
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
