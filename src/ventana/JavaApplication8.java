@@ -267,6 +267,7 @@ public class JavaApplication8 extends javax.swing.JFrame {
             int i = 0;
             while (i < misdatos.getLineasFichero().size()) {
                 String fecha = misdatos.getLineasFichero().get(i).getFecha();
+                System.out.println("fecha "+fecha);
                 if (fecha.compareTo(jTextField1.getText()) >= 0 && fecha.compareTo(jTextField2.getText()) < 0) {
 
                     GeoPosition geo_temp = new GeoPosition(misdatos.getLineasFichero().get(i).getLatitud(), misdatos.getLineasFichero().get(i).getLongitud());
