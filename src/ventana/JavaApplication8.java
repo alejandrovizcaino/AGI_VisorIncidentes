@@ -275,7 +275,8 @@ public class JavaApplication8 extends javax.swing.JFrame {
                 if(fecha.compareTo(jTextField1.getText())>=0 && fecha.compareTo(jTextField2.getText())<0){
                     
                     GeoPosition geo_temp = new GeoPosition(misdatos.getLineasFichero().get(i).getLatitud(), misdatos.getLineasFichero().get(i).getLongitud());
-                    SwingWaypoint sw = new SwingWaypoint
+                    SwingWaypoint sw = new SwingWaypoint(misdatos.getLineasFichero().get(i).getBarrio(), geo_temp);
+                    waypoints.add(sw);
                 }
                 i++;
             }
