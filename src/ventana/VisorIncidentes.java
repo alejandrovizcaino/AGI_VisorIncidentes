@@ -37,6 +37,8 @@ public class VisorIncidentes extends javax.swing.JFrame {
     Set<SwingWaypoint> waypoints = new HashSet();
     WaypointPainter<SwingWaypoint> swingWaypointPainter = new SwingWaypointOverlayPainter();
     Datos misdatos = new Datos();
+    Datos seleccionados = new Datos();
+    int posicion = 0;
     // End of variables declaration  
 
     /**
@@ -81,15 +83,14 @@ public class VisorIncidentes extends javax.swing.JFrame {
         mapViewer.setTileFactory(tileFactory);
 
         GeoPosition nuevayork = new GeoPosition(40.71427, -74.00597);
-        
-           // Add interactions
+
+        // Add interactions
         /*MouseInputListener mia = new PanMouseInputListener(mapViewer);
         mapViewer.addMouseListener(mia);
         mapViewer.addMouseMotionListener(mia);
         mapViewer.addMouseListener(new CenterMapListener(mapViewer));
         mapViewer.addMouseWheelListener(new ZoomMouseWheelListenerCenter(mapViewer));
         mapViewer.addKeyListener(new PanKeyListener(mapViewer));*/
-
         // Set the focus
         mapViewer.setZoom(10);
         mapViewer.setAddressLocation(nuevayork);
@@ -97,8 +98,6 @@ public class VisorIncidentes extends javax.swing.JFrame {
         mapViewer.setLocation(60, 50);
         this.getContentPane().add(mapViewer);
 
-     
-        
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("FECHA FINAL:");
 
@@ -265,17 +264,21 @@ public class VisorIncidentes extends javax.swing.JFrame {
         if (jTextField1.equals("") || jTextField2.equals("")) {
             System.out.println("vacío");
         }
+        mapViewer.removeAll();
+        waypoints.clear();
+        seleccionados.borrarArray();
         if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty()) {
 
             int i = 0;
             while (i < misdatos.getLineasFichero().size()) {
                 String fecha = misdatos.getLineasFichero().get(i).getFecha();
-                System.out.println("fecha "+fecha);
+                //System.out.println("fecha " + fecha);
                 if (fecha.compareTo(jTextField1.getText()) >= 0 && fecha.compareTo(jTextField2.getText()) < 0) {
 
                     GeoPosition geo_temp = new GeoPosition(misdatos.getLineasFichero().get(i).getLatitud(), misdatos.getLineasFichero().get(i).getLongitud());
                     SwingWaypoint sw = new SwingWaypoint(misdatos.getLineasFichero().get(i).getBarrio(), geo_temp);
                     waypoints.add(sw);
+                    seleccionados.setLinea(misdatos.getLineasFichero().get(i)); // !! POR HACER: borrar seleccionados anteriores
                 }
                 i++;
             }
@@ -293,36 +296,103 @@ public class VisorIncidentes extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        mapViewer.removeAll();
+     
+        /*   mapViewer.removeAll();
         waypoints.clear();
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+        if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty()) {
+
+                int i = 0;
+                boolean iguales = true;
+                String fecha="", anio_actual="", mes_actual="";
+                int tam = seleccionados.getLineasFichero().size();
+                while (iguales && i < tam) {
+                    System.out.println(tam);
+                    if(i==0){
+                        //Guardo el primero
+                        fecha = seleccionados.getLineasFichero().get(i).getFecha();
+                        System.out.println("fecha del primero: " + fecha);
+                        anio_actual = fecha.substring(0, 4);
+                        mes_actual = fecha.substring(5, 7);
+                    }
+                    
+                    if (anio_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(0,4)) 
+                                    && mes_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(5,7))){
+                        System.out.println(seleccionados.getLineasFichero().get(i).getFecha()+" igual a "+anio_actual+"-"+mes_actual);
+                        GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
+                        SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
+                        waypoints.add(sw);
+                    }
+                    else {
+                        System.out.println(seleccionados.getLineasFichero().get(i).getFecha()+"no igual a "+anio_actual+"-"+mes_actual);
+                        iguales = false;
+                    }
+                    jTextField3.setText(mes_actual);
+                    jTextField4.setText(String.valueOf(i));
+                    i++; 
+                }
+                      
+        }
         swingWaypointPainter.setWaypoints(waypoints);
         mapViewer.setOverlayPainter(swingWaypointPainter);
         
-        
-        
-        
-        
+        // Add the JButtons to the map viewer
+        for (SwingWaypoint w : waypoints) {
+            mapViewer.add(w.getButton());
+        }*/
+
     }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+      
         mapViewer.removeAll();
         waypoints.clear();
+        
+
+        if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty()) {
+
+                int i = 0;
+                boolean iguales = true;
+                String fecha="", anio_actual="", mes_actual="";
+                int tam = seleccionados.getLineasFichero().size();
+                while (iguales && i < tam) {
+                    System.out.println(tam);
+                    if(i==0){
+                        //Guardo el primero
+                        fecha = seleccionados.getLineasFichero().get(i).getFecha();
+                        System.out.println("fecha del primero: " + fecha);
+                        anio_actual = fecha.substring(0, 4);
+                        mes_actual = fecha.substring(5, 7);
+                    }
+                    
+                    if (anio_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(0,4)) 
+                                    && mes_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(5,7))){
+                        System.out.println(seleccionados.getLineasFichero().get(i).getFecha()+" igual a "+anio_actual+"-"+mes_actual);
+                        GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
+                        SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
+                        waypoints.add(sw);
+                        jTextField3.setText(mes_actual);
+                        jTextField4.setText(String.valueOf(i+1));
+                    }
+                    else {
+                        System.out.println(seleccionados.getLineasFichero().get(i).getFecha()+"no igual a "+anio_actual+"-"+mes_actual);
+                        iguales = false;
+                        
+                    }
+                  
+                   
+                    i++; 
+                }
+                      
+        }
         swingWaypointPainter.setWaypoints(waypoints);
         mapViewer.setOverlayPainter(swingWaypointPainter);
+        
+        // Add the JButtons to the map viewer
+        for (SwingWaypoint w : waypoints) {
+            mapViewer.add(w.getButton());
+        }
     }
 
     /**

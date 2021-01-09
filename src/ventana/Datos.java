@@ -18,7 +18,15 @@ public class Datos {
         return lineasFichero;
     }
     
+    public void borrarArray(){
+        lineasFichero.clear();
+    }
     
+    public void setLinea(LineaFichero lf){
+        
+        lineasFichero.add(lf);
+    }
+            
 
     public  void cargarFichero() {
 
