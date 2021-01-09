@@ -1,11 +1,14 @@
     package ventana;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JFrame;
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.OSMTileFactoryInfo;
 import org.jxmapviewer.viewer.DefaultTileFactory;
 import org.jxmapviewer.viewer.GeoPosition;
 import org.jxmapviewer.viewer.TileFactoryInfo;
+import org.jxmapviewer.viewer.WaypointPainter;
 
 
 /**
@@ -33,6 +36,8 @@ public class JavaApplication8 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     JXMapViewer mapViewer = new JXMapViewer();
+    Set<SwingWaypoint> waypoints = new HashSet();
+    WaypointPainter<SwingWaypoint> swingWaypointPainter = new SwingWaypointOverlayPainter();
     // End of variables declaration  
 
 
@@ -256,7 +261,30 @@ public class JavaApplication8 extends javax.swing.JFrame {
     }                      
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        
+        if (jTextField1.equals("") || jTextField2.equals("")){
+            System.out.println("vacío");
+        }
+        if (jTextField1.)
+        
+         // Create waypoints from the geo-positions
+        Set<SwingWaypoint> waypoints = new HashSet<SwingWaypoint>(Arrays.asList(
+                new SwingWaypoint("Frankfurt", frankfurt),
+                new SwingWaypoint("Wiesbaden", wiesbaden),
+                new SwingWaypoint("Mainz", mainz),
+                new SwingWaypoint("Darmstadt", darmstadt),
+                new SwingWaypoint("Offenbach", offenbach)));
+
+        // Set the overlay painter
+        
+        swingWaypointPainter.setWaypoints(waypoints);
+        mapViewer.setOverlayPainter(swingWaypointPainter);
+
+        // Add the JButtons to the map viewer
+        for (SwingWaypoint w : waypoints) {
+            mapViewer.add(w.getButton());
+        }
+
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
