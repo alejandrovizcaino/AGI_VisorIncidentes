@@ -309,10 +309,15 @@ public class JavaApplication8 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        mapViewer.removeAll();
+        waypoints.clear();
+        
     }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        mapViewer.removeAll();
+        waypoints.clear();
     }
 
     /**
