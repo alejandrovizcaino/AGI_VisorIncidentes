@@ -53,15 +53,15 @@ public class JavaApplication8 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField(); //Fecha inicial
+        jTextField2 = new javax.swing.JTextField(); //Fecha final
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField(); 
+        jTextField4 = new javax.swing.JTextField(); //incidentes
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -144,6 +144,9 @@ public class JavaApplication8 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("INCIDENTES");
         jLabel1.setAlignmentX(0.5F);
+        
+        jTextField2.setToolTipText("año-mes en formato: YYYY-MM");
+        jTextField1.setToolTipText("año-mes en formato: YYYY-MM");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
