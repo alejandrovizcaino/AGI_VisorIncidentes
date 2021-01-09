@@ -81,6 +81,14 @@ public class VisorIncidentes extends javax.swing.JFrame {
         mapViewer.setTileFactory(tileFactory);
 
         GeoPosition nuevayork = new GeoPosition(40.71427, -74.00597);
+        
+           // Add interactions
+        /*MouseInputListener mia = new PanMouseInputListener(mapViewer);
+        mapViewer.addMouseListener(mia);
+        mapViewer.addMouseMotionListener(mia);
+        mapViewer.addMouseListener(new CenterMapListener(mapViewer));
+        mapViewer.addMouseWheelListener(new ZoomMouseWheelListenerCenter(mapViewer));
+        mapViewer.addKeyListener(new PanKeyListener(mapViewer));*/
 
         // Set the focus
         mapViewer.setZoom(10);
@@ -89,13 +97,8 @@ public class VisorIncidentes extends javax.swing.JFrame {
         mapViewer.setLocation(60, 50);
         this.getContentPane().add(mapViewer);
 
-        // Add interactions
-        /*MouseInputListener mia = new PanMouseInputListener(mapViewer);
-        mapViewer.addMouseListener(mia);
-        mapViewer.addMouseMotionListener(mia);
-        mapViewer.addMouseListener(new CenterMapListener(mapViewer));
-        mapViewer.addMouseWheelListener(new ZoomMouseWheelListenerCenter(mapViewer));
-        mapViewer.addKeyListener(new PanKeyListener(mapViewer));*/
+     
+        
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("FECHA FINAL:");
 
@@ -293,8 +296,24 @@ public class VisorIncidentes extends javax.swing.JFrame {
         // TODO add your handling code here:
         mapViewer.removeAll();
         waypoints.clear();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         swingWaypointPainter.setWaypoints(waypoints);
         mapViewer.setOverlayPainter(swingWaypointPainter);
+        
+        
+        
+        
         
     }
 
