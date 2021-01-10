@@ -319,7 +319,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                     if (i == 0) {
                         //Guardo el primero
                         fecha = seleccionados.getLineasFichero().get(i).getFecha();
-                        System.out.println("If posicion==0 Posicion: "+posicion+" fecha del primero: " + fecha);
+                        //System.out.println("If posicion==0 Posicion: "+posicion+" fecha del primero: " + fecha);
                         anio_actual = fecha.substring(0, 4);
                         mes_actual = fecha.substring(5, 7);
                     }
@@ -327,7 +327,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                     if (anio_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(0, 4))
                             && mes_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(5, 7))) {
 
-                        System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " igual a " + anio_actual + "-" + mes_actual);
+                        //System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " igual a " + anio_actual + "-" + mes_actual);
                         GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
                         SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
                         waypoints.add(sw);
@@ -337,7 +337,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
 
                         posicion++;
                         posiciones.add(i);
-                        System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " no igual a " + anio_actual + "-" + mes_actual);
+                        //System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " no igual a " + anio_actual + "-" + mes_actual);
                         iguales = false;
 
                     }
@@ -361,6 +361,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                 if (seleccionados.getLineasFichero().get(posiciones.get(posicion)).getFecha().compareTo(jTextField2.getText()) < 0) {
 
                     int i = posiciones.get(posicion);
+                    int inicial = i;
                     fecha = seleccionados.getLineasFichero().get(i).getFecha();
                     System.out.println("Else "+i+" posicion: "+posicion+" fecha : " + fecha);
                     anio_actual = fecha.substring(0, 4);
@@ -380,11 +381,13 @@ public class VisorIncidentes extends javax.swing.JFrame {
                             SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
                             waypoints.add(sw);
                             jTextField3.setText(mes_actual);
-                            jTextField4.setText(String.valueOf(i + 1));
+                            jTextField4.setText(String.valueOf(i-inicial+1));
                         } else {
 
                             posicion++;
-                            posiciones.add(i);
+                            //if (posiciones.get(i)==null){
+                                posiciones.add(i);
+                           // }
                             System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " no igual a " + anio_actual + "-" + mes_actual);
                             iguales = false;
 
@@ -457,7 +460,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
             mapViewer.add(w.getButton());
         }*/
         
-           mapViewer.removeAll();
+        mapViewer.removeAll();
         waypoints.clear();
         String fecha = "", anio_actual = "", mes_actual = "";
 
@@ -515,10 +518,10 @@ public class VisorIncidentes extends javax.swing.JFrame {
             if (!jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty()) {
 
                 if (seleccionados.getLineasFichero().get(posiciones.get(posicion)).getFecha().compareTo(jTextField2.getText()) < 0) {
-
-                    int i = posiciones.get(posicion);
+                    
+                    int i = posiciones.get(posicion)-1;
                     fecha = seleccionados.getLineasFichero().get(i).getFecha();
-                    System.out.println("Else "+i+" posicion: "+posicion+" fecha : " + fecha);
+                    System.out.println("Else "+i+" posicion: "+posicion+" fecha: " + fecha);
                     anio_actual = fecha.substring(0, 4);
                     mes_actual = fecha.substring(5, 7);
 
@@ -526,9 +529,12 @@ public class VisorIncidentes extends javax.swing.JFrame {
 
                     //int tam = seleccionados.getLineasFichero().size();
                     int anterior = posiciones.get(posicion-1);
-                    while (i > anterior) {
-                        System.out.println("i= "+posicion);
-
+                    System.out.println("anterior es "+anterior);
+                    jTextField3.setText(mes_actual);
+                    jTextField4.setText(String.valueOf(i-anterior+1));
+                    while (i >= anterior) {
+                        System.out.println("i= "+i+" mayor que "+anterior);
+                        mostrarPosiciones();
                         if (anio_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(0, 4))
                                 && mes_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(5, 7))) {
 
@@ -536,24 +542,23 @@ public class VisorIncidentes extends javax.swing.JFrame {
                             GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
                             SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
                             waypoints.add(sw);
-                            jTextField3.setText(mes_actual);
-                            jTextField4.setText(String.valueOf(i+1));
-                            
+
+                                                       
                         } else {
 
                             posicion--;
                             //posiciones.add(i);
-                            //System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " no igual a " + anio_actual + "-" + mes_actual);
+                            System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " no igual a " + anio_actual + "-" + mes_actual);
                             //iguales = false;
 
                         }
-
                         i--;
+                        
 
                     }
                    
                 }
-                //else posicion++;
+                posicion--;
 
             }
             
@@ -565,6 +570,12 @@ public class VisorIncidentes extends javax.swing.JFrame {
                 mapViewer.add(w.getButton());
             }
 
+        }
+    }
+    
+    public void mostrarPosiciones(){
+        for (int i = 0; i < posiciones.size(); i++) {
+            System.out.println("posicion i: "+i+"="+posiciones.get(i));
         }
     }
 
