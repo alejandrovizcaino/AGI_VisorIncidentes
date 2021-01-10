@@ -530,6 +530,30 @@ public class VisorIncidentes extends javax.swing.JFrame {
     
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
        
+        //mostrar los elementos de ese barrio y el numero de incidentes en ese barrio
+        
+        mapViewer.removeAll();
+        waypoints.clear();
+        
+        System.out.println("combobox selecciona "+jComboBox1.getSelectedItem());
+        
+        for (int i = 0; i < seleccionados.getLineasFichero().size(); i++) {
+            
+            if(seleccionados.getLineasFichero().get(i).getBarrio().equals(jComboBox1.getSelectedItem())){
+                
+                GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
+                SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
+                waypoints.add(sw);
+            }
+        }
+        jTextField4.setText(String.valueOf(waypoints.size()));
+        swingWaypointPainter.setWaypoints(waypoints);
+        mapViewer.setOverlayPainter(swingWaypointPainter);
+
+        // Add the JButtons to the map viewer
+        for (SwingWaypoint w : waypoints) {
+            mapViewer.add(w.getButton());
+        }
           
     }  
     
