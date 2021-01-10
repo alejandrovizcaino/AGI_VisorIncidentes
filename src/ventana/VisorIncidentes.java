@@ -281,7 +281,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                     GeoPosition geo_temp = new GeoPosition(misdatos.getLineasFichero().get(i).getLatitud(), misdatos.getLineasFichero().get(i).getLongitud());
                     SwingWaypoint sw = new SwingWaypoint(misdatos.getLineasFichero().get(i).getBarrio(), geo_temp);
                     waypoints.add(sw);
-                    seleccionados.setLinea(misdatos.getLineasFichero().get(i)); // !! POR HACER: borrar seleccionados anteriores
+                    seleccionados.setLinea(misdatos.getLineasFichero().get(i)); 
                 }
                 i++;
             }
