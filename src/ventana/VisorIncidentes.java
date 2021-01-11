@@ -46,6 +46,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
     public VisorIncidentes() {
 
         misdatos.cargarFichero();
+        misdatos.mostrarLineasFichero();
         this.setTitle("Visor de incidentes de Nueva York");
         initComponents();
         this.setResizable(false);

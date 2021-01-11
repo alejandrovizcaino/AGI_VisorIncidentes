@@ -33,7 +33,7 @@ public class Datos {
         BufferedReader objReader = null;
         try {
             String strCurrentLine;
-            objReader = new BufferedReader(new FileReader("C:\\Users\\Alex\\Documents\\NetBeansProjects\\VisorIncidentes\\incidents2.txt"));
+            objReader = new BufferedReader(new FileReader("C:\\Users\\Alex\\Documents\\NetBeansProjects\\VisorIncidentes\\incidentes_v2.txt"));
             while ((strCurrentLine = objReader.readLine()) != null) {
 
                 String[] splited = strCurrentLine.split(",");
