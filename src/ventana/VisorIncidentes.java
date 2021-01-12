@@ -79,10 +79,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
         TileFactoryInfo info = new OSMTileFactoryInfo();
         DefaultTileFactory tileFactory = new DefaultTileFactory(info);
         tileFactory.setThreadPoolSize(8);
-
-        //JXMapViewer mapViewer = new JXMapViewer();
         mapViewer.setTileFactory(tileFactory);
-
         GeoPosition nuevayork = new GeoPosition(40.71427, -74.00597);
 
         // Add interactions
@@ -92,6 +89,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
         mapViewer.addMouseListener(new CenterMapListener(mapViewer));
         mapViewer.addMouseWheelListener(new ZoomMouseWheelListenerCenter(mapViewer));
         mapViewer.addKeyListener(new PanKeyListener(mapViewer));*/
+        
         // Set the focus
         mapViewer.setZoom(10);
         mapViewer.setAddressLocation(nuevayork);

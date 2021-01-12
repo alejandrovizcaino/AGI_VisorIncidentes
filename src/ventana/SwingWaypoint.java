@@ -25,7 +25,6 @@ public class SwingWaypoint extends DefaultWaypoint {
         button = new JButton();
         button.setSize(8, 8);
         button.setBackground(Color.red);
-        //button.setBorder(new RoundedBorder(10)); //10 is the radius
         button.setPreferredSize(new Dimension(8, 8));
         button.addMouseListener(new SwingWaypointMouseListener());
         button.setVisible(true);
