@@ -368,7 +368,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                     int i = posiciones.get(posicion);
                     int inicial = i;
                     fecha = seleccionados.getLineasFichero().get(i).getFecha();
-                    System.out.println("Else "+i+" posicion: "+posicion+" fecha : " + fecha);
+                    //System.out.println("Else "+i+" posicion: "+posicion+" fecha : " + fecha);
                     anio_actual = fecha.substring(0, 4);
                     mes_actual = fecha.substring(5, 7);
 
@@ -376,12 +376,12 @@ public class VisorIncidentes extends javax.swing.JFrame {
 
                     int tam = seleccionados.getLineasFichero().size();
                     while (iguales && i < tam) {
-                        System.out.println("i= "+posicion);
+                        //System.out.println("i= "+posicion);
 
                         if (anio_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(0, 4))
                                 && mes_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(5, 7))) {
 
-                            System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " igual a " + anio_actual + "-" + mes_actual);
+                            //System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " igual a " + anio_actual + "-" + mes_actual);
                             GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
                             SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
                             waypoints.add(sw);
@@ -393,7 +393,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                             //if (posiciones.get(i)==null){
                                 posiciones.add(i);
                            // }
-                            System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " no igual a " + anio_actual + "-" + mes_actual);
+                            //System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " no igual a " + anio_actual + "-" + mes_actual);
                             iguales = false;
 
                         }
@@ -437,7 +437,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                     if (i == 0) {
                         //Guardo el primero
                         fecha = seleccionados.getLineasFichero().get(i).getFecha();
-                        System.out.println("If posicion==0 Posicion: "+posicion+" fecha del primero: " + fecha);
+                        //System.out.println("If posicion==0 Posicion: "+posicion+" fecha del primero: " + fecha);
                         anio_actual = fecha.substring(0, 4);
                         mes_actual = fecha.substring(5, 7);
                     }
@@ -445,7 +445,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                     if (anio_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(0, 4))
                             && mes_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(5, 7))) {
 
-                        System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " igual a " + anio_actual + "-" + mes_actual);
+                        //System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " igual a " + anio_actual + "-" + mes_actual);
                         GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
                         SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
                         waypoints.add(sw);
@@ -477,22 +477,22 @@ public class VisorIncidentes extends javax.swing.JFrame {
                     
                     int i = posiciones.get(posicion)-1;
                     fecha = seleccionados.getLineasFichero().get(i).getFecha();
-                    System.out.println("Else "+i+" posicion: "+posicion+" fecha: " + fecha);
+                    //System.out.println("Else "+i+" posicion: "+posicion+" fecha: " + fecha);
                     anio_actual = fecha.substring(0, 4);
                     mes_actual = fecha.substring(5, 7);
 
                     
                     int anterior = posiciones.get(posicion-1);
-                    System.out.println("anterior es "+anterior);
+                    //System.out.println("anterior es "+anterior);
                     jTextField3.setText(anio_actual+"-"+mes_actual);
                     jTextField4.setText(String.valueOf(i-anterior+1));
                     while (i >= anterior) {
-                        System.out.println("i= "+i+" mayor que "+anterior);
+                        //System.out.println("i= "+i+" mayor que "+anterior);
                         mostrarPosiciones();
                         if (anio_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(0, 4))
                                 && mes_actual.equals(seleccionados.getLineasFichero().get(i).getFecha().substring(5, 7))) {
 
-                            System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " igual a " + anio_actual + "-" + mes_actual);
+                            //System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " igual a " + anio_actual + "-" + mes_actual);
                             GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
                             SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
                             waypoints.add(sw);
@@ -502,7 +502,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
 
                             posicion--;
                            
-                            System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " no igual a " + anio_actual + "-" + mes_actual);
+                            //System.out.println(seleccionados.getLineasFichero().get(i).getFecha() + " no igual a " + anio_actual + "-" + mes_actual);
                            
 
                         }
@@ -534,7 +534,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
         mapViewer.removeAll();
         waypoints.clear();
         
-        System.out.println("combobox selecciona "+jComboBox1.getSelectedItem());
+        //System.out.println("combobox selecciona "+jComboBox1.getSelectedItem());
         
         for (int i = 0; i < seleccionados.getLineasFichero().size(); i++) {
             
