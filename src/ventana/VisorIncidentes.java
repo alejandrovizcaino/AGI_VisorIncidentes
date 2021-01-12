@@ -46,7 +46,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
     public VisorIncidentes() {
 
         misdatos.cargarFichero();
-        misdatos.mostrarLineasFichero();
+        //misdatos.mostrarLineasFichero();
         this.setTitle("Visor de incidentes de Nueva York");
         initComponents();
         this.setResizable(false);
@@ -336,7 +336,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                         GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
                         SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
                         waypoints.add(sw);
-                        jTextField3.setText(mes_actual);
+                        jTextField3.setText(anio_actual+"-"+mes_actual);
                         jTextField4.setText(String.valueOf(i + 1));
                     } else {
 
@@ -385,7 +385,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                             GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
                             SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
                             waypoints.add(sw);
-                            jTextField3.setText(mes_actual);
+                            jTextField3.setText(anio_actual+"-"+mes_actual);
                             jTextField4.setText(String.valueOf(i-inicial+1));
                         } else {
 
@@ -449,7 +449,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                         GeoPosition geo_temp = new GeoPosition(seleccionados.getLineasFichero().get(i).getLatitud(), seleccionados.getLineasFichero().get(i).getLongitud());
                         SwingWaypoint sw = new SwingWaypoint(seleccionados.getLineasFichero().get(i).getBarrio(), geo_temp);
                         waypoints.add(sw);
-                        jTextField3.setText(mes_actual);
+                        jTextField3.setText(anio_actual+"-"+mes_actual);
                         jTextField4.setText(String.valueOf(i + 1));
                     } else {
 
@@ -484,7 +484,7 @@ public class VisorIncidentes extends javax.swing.JFrame {
                     
                     int anterior = posiciones.get(posicion-1);
                     System.out.println("anterior es "+anterior);
-                    jTextField3.setText(mes_actual);
+                    jTextField3.setText(anio_actual+"-"+mes_actual);
                     jTextField4.setText(String.valueOf(i-anterior+1));
                     while (i >= anterior) {
                         System.out.println("i= "+i+" mayor que "+anterior);
